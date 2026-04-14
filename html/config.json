@@ -16,8 +16,19 @@
 	"version": "1.0.3",
 
 	"variations": [
+      {
+          "description"         : "hello world",
+          "url"                 : "hello.html",
+          "icons"               : ["resources/img/icon.png", "resources/img/icon@2x.png"],
+          "isViewer"            : false,
+          "EditorsSupport"      : ["word", "cell"],
+          "isVisual"            : false,
+          "initDataType"        : "none",
+          "initData"            : "",
+          "buttons"             : []
+      },
 		{
-			"description": "Get your document content as HTML code, modify it, and paste back to the document.",
+			"description": "Get HTML",
 			"descriptionLocale": {
 				"ru": "Получите содержимое документа в виде HTML-кода с возможностью отредактировать полученный результат.",
 				"fr": "Obtenez le contenu de votre document sous forme de code HTML, modifiez-le et collez-le dans le document.",
@@ -36,7 +47,7 @@
 			"icons2": [
 				{
 					"style" : "light",
-					
+
 					"100%": {
 						"normal": "resources/light/icon.png"
 					},
@@ -55,7 +66,7 @@
 				},
 				{
 					"style" : "dark",
-					
+
 					"100%": {
 						"normal": "resources/dark/icon.png"
 					},
@@ -78,9 +89,9 @@
 			"isVisual": true,
 			"isModal": false,
 			"isInsideMode": true,
-			"initDataType": "html",
 			"isUpdateOleOnResize": false,
-			"initOnSelectionChanged": true,
+			"initDataType": "text",
+			"initOnSelectionChanged": false,
 			"store": {
 				"background": {
 					"light" : "#F5F5F5",
