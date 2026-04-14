@@ -1,14 +1,27 @@
 # scittle_kitchen_plugin
-Tutorial
+## Tutorials
 
 https://api.onlyoffice.com/docs/plugin-and-macros/samples/plugins/hello-world/
 https://api.onlyoffice.com/docs/office-api/get-started/overview/
+
+## Sources
+https://github.com/ONLYOFFICE/onlyoffice.github.io/tree/master/sdkjs-plugins
+https://github.com/ONLYOFFICE/sdkjs-plugins
+
+##  Get and paste html:
+this is an especially good example
+
+Description: https://api.onlyoffice.com/docs/plugin-and-macros/samples/plugins/get-and-paste-html/
+
+Source: https://github.com/ONLYOFFICE/onlyoffice.github.io/tree/master/sdkjs-plugins/content/html
+
+## How to add Plugins in Euro-Office
 
 ```
 python cors_server.py
 ```
 
-In browser developer console, on the right bottom switch from `top` to  `new.docx` (otherwise below you get `ReferenceError: Asc is not defined`)
+Start Euro-Office. In browser developer console, on the right bottom switch from `top` to  `new.docx` (otherwise you get `ReferenceError: Asc is not defined`)
 
 ```
 fetch("http://localhost:8003/config.json")
@@ -21,6 +34,5 @@ fetch("http://localhost:8003/config.json")
 
 Asc.editor.installDeveloperPlugin("http://localhost:8003/config.json")
 ```
-generate uuid: `$ uuidgen`
 
 `Plugins` appears next to `View`
