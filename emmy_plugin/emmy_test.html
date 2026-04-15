@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	      <meta charset="UTF-8">
+	      <title>Emmy Test</title>
+	      <script src="vendor/scittle_kitchen/scittle.js"></script>
+	      <script src="vendor/scittle_kitchen/scittle.emmy.js"></script>
+        <script src="scripts/schemacros.js"></script>
+    </head>
+    <body>
+        <script>
+         scittle.core.eval_string(schemacros);
+         scittle.core.eval_string("(.log js/console 'scittle1')");
+         scittle.core.eval_string("(ns helloemmy (:require [mentat-collective.emmy.scheme :as scheme :refer [define define-1 let-scheme lambda]] [emmy.env :as e :refer :all]))");
+
+         scittle.core.eval_string("(.log js/console (->infix ((D sin) 'x)))");
+
+         scittle.core.eval_string("(def x 3)");
+         scittle.core.eval_string("(.log js/console x)");
+         scittle.core.eval_string("(define y 4)");
+         scittle.core.eval_string("(.log js/console y)");
+
+        </script>
+    </body>
+</html>

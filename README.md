@@ -98,3 +98,10 @@ https://github.com/ONLYOFFICE/onlyoffice.github.io/tree/master/sdkjs-plugins/con
 ### Some methods not well documented yet
 
 `window.Asc.plugin.tr('Sometext')`: translates a string to the locale
+
+## Generate schemacros.js
+
+```
+clj -Sdeps "{:deps {cheshire/cheshire {:mvn/version \"6.2.0\"}}}" -M -e "(do (require '[cheshire.core :as json]) (spit \"schemacros.js\" (str \"var schemacros= \" (json/generate-string  (slurp  \"scheme.cljc\")))))"
+
+```

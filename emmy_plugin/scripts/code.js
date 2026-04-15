@@ -38,6 +38,16 @@
 	{
 
                              console.log("initfun2");
+      scittle.core.eval_string(schemacros);
+      scittle.core.eval_string("(.log js/console 'scittle1')");
+      scittle.core.eval_string("(ns helloemmy (:require [mentat-collective.emmy.scheme :as scheme :refer [define define-1 let-scheme lambda]] [emmy.env :as e :refer :all]))");
+
+      scittle.core.eval_string("(.log js/console (->infix ((D sin) 'x)))");
+
+      scittle.core.eval_string("(def x 3)");
+      scittle.core.eval_string("(.log js/console x)");
+      scittle.core.eval_string("(define y 4)");
+      scittle.core.eval_string("(.log js/console y)");
                              console.log("initfun33");
 		if (window.Asc.plugin.info.isViewMode)
 			document.getElementById("btn_paste").classList.add('hidden');
@@ -75,23 +85,27 @@
 			// document.getElementById("main").value = text;
 		// }
 		window.onresize = function(e){
-			// document.getElementById("div_main").style.width = document.getElementById("body").clientWidth- 20 +"px";
+			  // document.getElementById("div_main").style.width = document.getElementById("body").clientWidth- 20 +"px";
 		};
       var that = this;
-		document.getElementById("btn_paste").onclick = function() {
-        scittle.core.eval_string("(.log js/console 'scittle1')");
+		  document.getElementById("btn_paste").onclick = function() {
+          scittle.core.eval_string("(.log js/console \"scittle1\")");
 
-        scittle.core.eval_string("(require '[emmy.env :as e :refer :all])");
+          scittle.core.eval_string("(.log js/console (->infix ((D sin) 'x)))");
+          scittle.core.eval_string("(def x 3)");
+          scittle.core.eval_string("(.log js/console x)");
 
-        scittle.core.eval_string("(.log js/console (->infix ((D sin) 'x)))");
+          var src = editor.getValue();
+          var erg = scittle.core.eval_string(src);
+          Asc.scope.text = {"src": src, "erg": erg};
 
-        Asc.scope.text = editor.getValue();
-        that.callCommand(function() {
-            var ws = Api.GetActiveSheet();
-            var rg = ws.GetSelection();
+          that.callCommand(function() {
+              var ws = Api.GetActiveSheet();
+              var rg = ws.GetSelection();
+              // rg.SetValue(Asc.scope.text.src);
             var r = rg.GetRow() - 1;
             var c = rg.GetCol() - 1;
-            ws.GetRangeByNumber(r, c + 1).SetValue(Asc.scope.text);
+            ws.GetRangeByNumber(r, c + 1).SetValue(Asc.scope.text.erg);
         }, true);
 		};
 		document.getElementById("btn_copy").onclick = function() {
