@@ -80,7 +80,7 @@
 			"isInsideMode": true,
 			"isUpdateOleOnResize": false,
 			"initDataType": "text",
-			"initOnSelectionChanged": false,
+			"initOnSelectionChanged": true,
 			"store": {
 				"background": {
 					"light" : "#F5F5F5",

@@ -32,22 +32,22 @@
 (function(window, undefined){
 
 	var editor;
-                             console.log("mainfun");
+                             console.log("mainfun00");
+    scittle.core.eval_string(schemacros);
+    scittle.core.eval_string("(ns helloemmy (:require [mentat-collective.emmy.scheme :as scheme :refer [define define-1 let-scheme lambda]] [emmy.env :as e :refer :all]))");
+
+    scittle.core.eval_string("(.log js/console (->infix ((D sin) 'x)))");
+
+    scittle.core.eval_string("(def x 3)");
+    scittle.core.eval_string("(.log js/console x)");
+    scittle.core.eval_string("(define y 4)");
+    scittle.core.eval_string("(.log js/console y)");
+
+    console.log("mainfun11");
 	const isIE = (/MSIE \d|Trident.*rv:/.test(navigator.userAgent));
-	window.Asc.plugin.init = function(text)
+	window.Asc.plugin.init = function(celltext)
 	{
-
-                             console.log("initfun2");
-      scittle.core.eval_string(schemacros);
-      scittle.core.eval_string("(.log js/console 'scittle1')");
-      scittle.core.eval_string("(ns helloemmy (:require [mentat-collective.emmy.scheme :as scheme :refer [define define-1 let-scheme lambda]] [emmy.env :as e :refer :all]))");
-
-      scittle.core.eval_string("(.log js/console (->infix ((D sin) 'x)))");
-
-      scittle.core.eval_string("(def x 3)");
-      scittle.core.eval_string("(.log js/console x)");
-      scittle.core.eval_string("(define y 4)");
-      scittle.core.eval_string("(.log js/console y)");
+                             console.log("initfun22");
                              console.log("initfun33");
 		if (window.Asc.plugin.info.isViewMode)
 			document.getElementById("btn_paste").classList.add('hidden');
@@ -68,16 +68,14 @@
 			plugins: prettierPlugins,
 			parser: "html"
 		};
-		// text = text.replace(/\<[\/]?p[a-zA-Z0-9-:;+"\/= >.]*/g,"");
-		text = text.replace(/class="[a-zA-Z0-9-:;+"\/=]*/g,"");
-	  var temp = (text.indexOf("<p") === -1) ? "\r\n" : "";
-		// if (text !== "")
-		// 	text = "<html><body>" + temp + text + "</body></html>";
 
-		if (!isIE)
-			text = prettier.format(text, settings);
+		// text = text.replace(/class="[a-zA-Z0-9-:;+"\/=]*/g,"");
 
-		// document.getElementById("div_main").style.width = document.getElementById("body").clientWidth- 20 +"px";
+		//if (!isIE)
+		//	text = prettier.format(text, settings);
+
+      var text = ((celltext[0] == '"') ? celltext.slice(1, -1) : celltext);
+
 		if (editor) {
 			editor.setValue(text);
 		};
@@ -96,6 +94,7 @@
           scittle.core.eval_string("(.log js/console x)");
 
           var src = editor.getValue();
+          console.log(src);
           var erg = scittle.core.eval_string(src);
           Asc.scope.text = {"src": src, "erg": erg};
 
@@ -106,7 +105,7 @@
             var r = rg.GetRow() - 1;
             var c = rg.GetCol() - 1;
             ws.GetRangeByNumber(r, c + 1).SetValue(Asc.scope.text.erg);
-        }, true);
+        }, false);
 		};
 		document.getElementById("btn_copy").onclick = function() {
 			if (editor.getValue() !== "") {
