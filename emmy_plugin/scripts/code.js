@@ -32,18 +32,11 @@
 (function(window, undefined){
 
 	var editor;
-                             console.log("mainfun00");
+
+    console.log("Starting the HelloEmmy plugin");
     scittle.core.eval_string(schemacros);
-    scittle.core.eval_string("(ns helloemmy (:require [mentat-collective.emmy.scheme :as scheme :refer [define define-1 let-scheme lambda]] [emmy.env :as e :refer :all]))");
-
-    scittle.core.eval_string("(.log js/console (->infix ((D sin) 'x)))");
-
-    scittle.core.eval_string("(def x 3)");
-    scittle.core.eval_string("(.log js/console x)");
-    scittle.core.eval_string("(define y 4)");
-    scittle.core.eval_string("(.log js/console y)");
-
     console.log("mainfun11");
+
 	const isIE = (/MSIE \d|Trident.*rv:/.test(navigator.userAgent));
 	window.Asc.plugin.init = function(celltext)
 	{
@@ -65,7 +58,7 @@
 			tabWidth: 4,
 			useTabs: true,
 			vueIndentScriptAndStyle: false,
-			plugins: prettierPlugins,
+			// plugins: prettierPlugins,
 			parser: "html"
 		};
 
@@ -88,10 +81,6 @@
       var that = this;
 		  document.getElementById("btn_paste").onclick = function() {
           scittle.core.eval_string("(.log js/console \"scittle1\")");
-
-          scittle.core.eval_string("(.log js/console (->infix ((D sin) 'x)))");
-          scittle.core.eval_string("(def x 3)");
-          scittle.core.eval_string("(.log js/console x)");
 
           var src = editor.getValue();
           console.log(src);
@@ -149,7 +138,7 @@
    console.log("translatefun2");
 	 var btn_paste = document.getElementById("btn_paste");
 	 if (btn_paste)
-			btn_paste.innerHTML = window.Asc.plugin.tr("Paste into the document");
+			btn_paste.innerHTML = window.Asc.plugin.tr("Eval and Paste to Spreadsheet");
 		var btn_copy = document.getElementById("btn_copy");
 		if (btn_copy)
 			btn_copy.innerHTML = window.Asc.plugin.tr("Copy");

@@ -1,4 +1,4 @@
-(ns mentat-collective.emmy.scheme)
+(ns scheme)
 
 (defn walk [inner outer form]
   (cond
